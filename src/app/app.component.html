@@ -16,6 +16,16 @@
 </div>
 
 <div *ngIf="loggedIn">
-  Welcome {{userName}}!
+  <h1>Welcome {{profile.fname}}!</h1>
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+        <mat-list>
+            <mat-list-item><a routerLink="/profile" routerLinkActive="active">Profile</a></mat-list-item>
+            <mat-list-item><a routerLink="/wishList" routerLinkActive="active">WishList</a></mat-list-item>
+          </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
-<!--app-wish-list *ngIf="!showLogInBox"></app-wish-list-->

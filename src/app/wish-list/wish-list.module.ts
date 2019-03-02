@@ -4,27 +4,19 @@ import { MatTableModule, MatCardModule, MatInputModule, MatFormFieldModule, MatB
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { WishListService } from './wish-list.service';
+import { WishListComponent } from './wish-list.component';
+import { CommonData } from '../CommonData';
 
 @NgModule({
   declarations: [
-    WishListModule
+    WishListComponent
   ], 
   imports: [
-    MatTableModule,
-    MatCardModule,
-    MatInputModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    HttpClientModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatLabel
+   CommonModule
   ],
   providers: [
-    WishListService
+    WishListService,
+    CommonData
   ]
-  
 })
 export class WishListModule { }

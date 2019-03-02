@@ -1,39 +1,45 @@
 <mat-card>
   <mat-card-header>
-    WishList
   </mat-card-header>
   <mat-card-subtitle>
-    <form [formGroup]='newWishForm'>
-      <mat-form-field>
-        <mat-select  placeholder="Select Type" formControlName='type'>
-          <mat-option *ngFor="let option of typeOptions" [value]="option">{{option}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Brand</mat-label>
-        <input matInput placeholder="Brand*" formControlName='brand'/>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Description</mat-label>
-        <input matInput placeholder="Description*" formControlName='description'/>
-      </mat-form-field>
-      <mat-form-field> 
-        <mat-select  placeholder="Select Quantity" formControlName='quantity'>
-          <mat-option *ngFor="let option of qtyOptions" [value]="option">{{option}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select  placeholder="Select Price" formControlName='budget'>
-          <mat-option *ngFor="let option of budgetOptions" [value]="option">{{option}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="targetDate">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <button mat-raised-button (click)="addNewWish()">Add</button>
-    </form>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Add New Wish</mat-panel-title>
+        </mat-expansion-panel-header>
+        <form [formGroup]='newWishForm'>
+            <mat-form-field>
+              <mat-select  placeholder="Select Type" formControlName='type'>
+                <mat-option *ngFor="let option of typeOptions" [value]="option">{{option}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Brand</mat-label>
+              <input matInput placeholder="Brand*" formControlName='brand'/>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Description</mat-label>
+              <input matInput placeholder="Description*" formControlName='description'/>
+            </mat-form-field>
+            <mat-form-field> 
+              <mat-select  placeholder="Select Quantity" formControlName='quantity'>
+                <mat-option *ngFor="let option of qtyOptions" [value]="option">{{option}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select  placeholder="Select Price" formControlName='budget'>
+                <mat-option *ngFor="let option of budgetOptions" [value]="option">{{option}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="targetDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <button mat-raised-button (click)="addNewWish()">Add</button>
+          </form>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-card-subtitle>
   <mat-card-content>
       <table mat-table [dataSource]="wishlist">

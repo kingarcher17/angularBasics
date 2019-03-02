@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonData } from '../CommonData';
+import { Profile } from './Profile';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  profile: Profile;
+
+  constructor(private commonData: CommonData) { }
 
   ngOnInit() {
+    this.profile = this.commonData.profile;
   }
-
 }
