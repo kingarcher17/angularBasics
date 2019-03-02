@@ -1,2 +1,21 @@
-<app-log-in (loggedIn)="updateShowLoginFlag($event)" *ngIf="showLogInBox"></app-log-in>
-<app-wish-list *ngIf="!showLogInBox"></app-wish-list>
+<div *ngIf="!loggedIn">
+    <form>
+       <mat-form-field>
+           <mat-label>Username:</mat-label>
+           <input matInput [(ngModel)]="userName" name="userName"/>
+       </mat-form-field>
+       <mat-form-field>
+          <mat-label>Password:</mat-label>
+          <input matInput [(ngModel)]="passWord" name="passWord"/>
+       </mat-form-field>
+       <button mat-raised-button (click)="login()">Login</button>
+   </form>
+    <div *ngIf="loginFailed"> 
+       your username or password is incorrect!
+    </div>
+</div>
+
+<div *ngIf="loggedIn">
+  Welcome {{userName}}!
+</div>
+<!--app-wish-list *ngIf="!showLogInBox"></app-wish-list-->

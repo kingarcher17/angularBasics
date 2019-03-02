@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +9,27 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  @Input()
-  showLogInBox = true;
+  constructor(private appService: AppService){}
+
+  userName: string;
+  passWord: string;
+  loggedIn: any = false;
+  logInFailed: any = false;
 
   ngOnInit() {
-    this.showLogInBox = true;
+    this.userName = "test";
+    this.passWord = "test";
   }
 
-  updateShowLoginFlag(show: any) {
-    this.showLogInBox = !show;
+  login() {
+    this.appService.authenticate(this.userName, this.passWord).subscribe((result: any) => {
+      this.loggedIn = true;
+      this.logInFailed = false;
+    }, 
+    error => {
+      this.loggedIn = false;
+      this.logInFailed = true;
+    })
   }
 
 }

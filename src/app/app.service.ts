@@ -1,17 +1,16 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 @Injectable()
-export class LogInService {
+export class AppService {
 
     constructor(private httpClient: HttpClient){};
 
-    authenticate(loginForm: any): Observable<boolean> {
+    authenticate(userName: string, passWord: string): Observable<boolean> {
         //return this.httpClient.get<any>("");
-        let valid = loginForm.userName=="test" && loginForm.passWord=="test";
+        let valid = userName=="test" && passWord=="test";
         return of(valid);
     }
-
 
 }
